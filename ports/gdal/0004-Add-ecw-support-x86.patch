@@ -1,0 +1,16 @@
+--- a/nmake.opt
++++ b/nmake.opt
+@@ -350,6 +350,13 @@ JPEG12_SUPPORTED = 1
+ #       -I$(ECWDIR)\include/NCSECW/ecw
+ #ECWLIB  =  $(ECWDIR)\lib\vc90\win32\NCSEcw.lib
+ 
++ECWDIR  = 	"C:\Programming\GLS\libecw511" 
++ECWFLAGS =	-DECWSDK_VERSION=51 \
++		-I$(ECWDIR)\include \
++		-I$(ECWDIR)\include/NCSECW/api -I$(ECWDIR)\include/NCSECW/jp2 \
++		-I$(ECWDIR)\include/NCSECW/ecw
++ECWLIB  = 	$(ECWDIR)\lib\x86\NCSEcw-511.lib
++
+ # To build ECW support as a plugin uncomment the following, and make sure
+ # to do "nmake /f makefile.vc plugin" in gdal/frmts/ecw and copy the two
+ # resulting DLLs to an appropriate place.

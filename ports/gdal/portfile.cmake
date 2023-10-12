@@ -46,6 +46,19 @@ foreach(BUILD_TYPE IN LISTS BUILD_TYPES)
           PATCHES
                 0001-Fix-debug-crt-flags.patch
       )
+		if(VCPKG_TARGET_ARCHITECTURE STREQUAL "x64")
+			vcpkg_apply_patches(
+				SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src-${TARGET_TRIPLET}-${BUILD_TYPE}/gdal-${GDAL_VERSION_STR}
+				PATCHES
+					0004-Add-ecw-support-x64.patch
+			)
+		else()
+			vcpkg_apply_patches(
+				SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src-${TARGET_TRIPLET}-${BUILD_TYPE}/gdal-${GDAL_VERSION_STR}
+				PATCHES
+					0004-Add-ecw-support-x86.patch
+			)
+		endif()	
     endif()
     vcpkg_apply_patches(
         SOURCE_PATH ${CURRENT_BUILDTREES_DIR}/src-${TARGET_TRIPLET}-${BUILD_TYPE}/gdal-${GDAL_VERSION_STR}/ogr
